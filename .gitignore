@@ -17,3 +17,6 @@ build
 # Logs:
 *.log
 logs/
+
+# Vagrant:
+.vagrant/
