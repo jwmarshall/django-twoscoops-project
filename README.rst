@@ -18,12 +18,29 @@ should replace this name with the actual name of your project.*
 Working Environment
 ===================
 
-You have several options in setting up your working environment.  We recommend
-using virtualenv to separate the dependencies of your project from your system's
-python environment.  If on Linux or Mac OS X, you can also use virtualenvwrapper to help manage multiple virtualenvs across different projects.
+This project template has been modified for developers using isolated virtual machines managed by vagrant. It is still recommended that you install virtualenv on the host machine to isolate your installation of django. We still need django on the host machine to create the new project from this template.
 
-Virtualenv Only
+Virtual Box
+-----------
+
+https://www.virtualbox.org/wiki/Downloads
+
+Vagrant
+-------
+
+Vagrant (1.1+) - http://vagrantup.com/downloads
+
+Vagrant Omnibus
 ---------------
+
+vagrant-omnibus is a plugin that ensures the appropriate version of chef get installed.
+Once you have installed vagrant, run this command::
+
+    $ vagrant plugin install vagrant-omnibus
+
+
+Local Virtualenv
+----------------
 
 First, make sure you are using virtualenv (http://www.virtualenv.org). Once
 that's installed, create your virtualenv::
@@ -77,12 +94,34 @@ Creating your project
 To create a new Django project called '**icecream**' using
 django-twoscoops-project, run the following command::
 
-    $ django-admin.py startproject --template=https://github.com/twoscoops/django-twoscoops-project/archive/master.zip --extension=py,rst,html icecream
+    $ django-admin.py startproject --template=https://github.com/jwmarshall/django-twoscoops-project/archive/master.zip --name=Vagrantfile --extension=py,rst,html icecream
+
+Creating your virtual machine
+=============================
+
+To create a new virtual machine running your project, run the following command::
+
+    $ cd icecream
+    $ vagrant up
+
+Creating a new virtual machine for the first time can take several minutes. Once completed you can login by running the following command::
+
+    $ vagrant ssh
+
+Your project is already running too! Visit the following URL::
+
+    http://localhost:8080
+
+All of the project files are all kept on your host computer and mounted inside the virtual machine. Move into your new project directory and start coding::
+
+    $ cd /vagrant/icecream
 
 Installation of Dependencies
 =============================
 
-Depending on where you are installing dependencies:
+All dependancies should be satisfied by the time vagrant up completes.
+
+Manually installing dependencies:
 
 In development::
 
