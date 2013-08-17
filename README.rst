@@ -112,6 +112,11 @@ Your project is already running too! Visit the following URL::
 
     http://localhost:8080
 
+You can login to the django admin with the following username and password::
+
+    user: vagrant
+    pass: vagrant
+
 All of the project files are all kept on your host computer and mounted inside the virtual machine. Move into your new project directory and start coding::
 
     $ cd /vagrant/icecream
