@@ -20,14 +20,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = "chef/cookbooks"
 
     chef.json = {
+      "postgresql" => {
+        "password" => {
+          "postgres" => "vagrant"
+        }
+      },
       "twoscoops" => {
-        "project_name" => DJANGO_PROJECT_NAME
+        "project_name" => DJANGO_PROJECT_NAME,
+        "database" => {
+          "engine" => "django.db.backends.psycopg2",
+          "username" => "postgres",
+          "password" => "vagrant"
+        }
       } 
     }
 
     chef.run_list = [
       "apt",
       "build-essential",
+      "postgresql::server",
       "python",
       "supervisor",
       "twoscoops"
