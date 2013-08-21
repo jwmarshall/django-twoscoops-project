@@ -13,6 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.forward_agent = true
 
+  config.berkshelf.enabled = true
+
   config.omnibus.chef_version = :latest
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef/cookbooks"
