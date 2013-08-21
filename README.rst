@@ -28,7 +28,7 @@ https://www.virtualbox.org/wiki/Downloads
 Vagrant
 -------
 
-Vagrant (1.1+) - http://vagrantup.com/downloads
+Vagrant (1.2+) - http://vagrantup.com/downloads
 
 Vagrant Omnibus
 ---------------
@@ -38,6 +38,17 @@ Once you have installed vagrant, run this command::
 
     $ vagrant plugin install vagrant-omnibus
 
+Vagrant Berkshelf
+-----------------
+
+Install the berkshelf gem::
+
+    $ gem install berkshelf
+
+vagrant-berkshelf is a plugin that ensures that all cookbook dependancies are dealt with.
+To install vagrant-berkshelf, run this command::
+
+    $ vagrant plugin install vagrant-berkshelf
 
 Local Virtualenv
 ----------------
