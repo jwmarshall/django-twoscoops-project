@@ -23,6 +23,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "postgresql" => {
         "password" => {
           "postgres" => "vagrant"
+        },
+        "config" => {
+          "client_encoding" => "UTF8",
+          "default_transaction_isolation" => "read committed",
+          "timezone" => "UTC"
         }
       },
       "twoscoops" => {
