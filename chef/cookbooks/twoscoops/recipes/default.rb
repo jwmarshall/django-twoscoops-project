@@ -7,10 +7,33 @@
 # All rights reserved - Do Not Redistribute
 #
 
+gem_package "pg"
+
+include_recipe "database::postgresql"
+
+database_connection_info = {
+  :host => 'localhost',
+  :username => 'postgres',
+  :password => node['postgresql']['password']['postgres']
+}
+
+postgresql_database "#{node['twoscoops']['project_name']}" do
+  connection database_connection_info
+  provider Chef::Provider::Database::Postgresql
+  action :create
+end
+
 directory "/vagrant/logs" do
   action :create
   owner "vagrant"
   mode 00755
+end
+
+template "/vagrant/#{node['twoscoops']['project_name']}/#{node['twoscoops']['project_name']}/settings/local.py" do
+  source "local.py.erb"
+  mode 00644
+  owner "vagrant"
+  group "vagrant"
 end
 
 execute "pip-install-requirements" do
