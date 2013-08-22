@@ -29,8 +29,8 @@ directory "/vagrant/logs" do
   mode 00755
 end
 
-template "/vagrant/#{node['twoscoops']['project_name']}/#{node['twoscoops']['project_name']}/settings/local.py" do
-  source "local.py.erb"
+template "/vagrant/#{node['twoscoops']['project_name']}/#{node['twoscoops']['project_name']}/settings/database.py" do
+  source "database.py.erb"
   mode 00644
   owner "vagrant"
   group "vagrant"
