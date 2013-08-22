@@ -50,6 +50,13 @@ To install vagrant-berkshelf, run this command::
 
     $ vagrant plugin install vagrant-berkshelf
 
+Vagrant AWS
+-----------
+
+If you want to deploy using the AWS provider you will first need to install the plugin by running this command::
+
+    $ vagrant plugin install vagrant-aws
+
 Local Virtualenv
 ----------------
 
