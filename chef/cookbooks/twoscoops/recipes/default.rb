@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-gem_package "pg"
+#gem_package "pg"
 
 include_recipe "database::postgresql"
 
@@ -25,15 +25,12 @@ end
 
 directory "/vagrant/logs" do
   action :create
-  owner "vagrant"
   mode 00755
 end
 
 template "/vagrant/#{node['twoscoops']['project_name']}/#{node['twoscoops']['project_name']}/settings/database.py" do
   source "database.py.erb"
   mode 00644
-  owner "vagrant"
-  group "vagrant"
 end
 
 execute "pip-install-requirements" do
@@ -69,7 +66,6 @@ end
 include_recipe "supervisor"
 
 supervisor_service "django" do
-  user "vagrant"
   command "python manage.py runserver 0.0.0.0:8080"
   autostart true
   directory "/vagrant/#{node['twoscoops']['project_name']}"
