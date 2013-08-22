@@ -4,6 +4,7 @@
 from os import environ
 
 from base import *
+from database import *
 
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
@@ -50,7 +51,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 ########## END EMAIL CONFIGURATION
 
 ########## DATABASE CONFIGURATION
-DATABASES = {}
+#DATABASES = {}
 ########## END DATABASE CONFIGURATION
 
 
