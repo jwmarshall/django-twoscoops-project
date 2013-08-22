@@ -20,6 +20,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = "chef/cookbooks"
 
     chef.json = {
+      "build_essential" => {
+        "compiletime" => true
+      },
       "postgresql" => {
         "password" => {
           "postgres" => "vagrant"
@@ -41,12 +44,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
 
     chef.run_list = [
-      "apt",
       "build-essential",
       "postgresql::server",
       "python",
       "supervisor",
       "twoscoops"
     ]
+  end
+
+  config.vm.provider :aws do |aws, override|
+    aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
+    aws.secret_access_key =  ENV['AWS_SECRET_ACCESS_KEY']
+    aws.keypair_name = "aws-default"
+
+    aws.ami = "ami-d0f89fb9"
+    aws.instance_type = "t1.micro"
+    #aws.security_groups = ['security-group-name']
+
+    override.ssh.username = "ubuntu"
+    override.ssh.private_key_path = "~/.ssh/aws.pem"
   end
 end
