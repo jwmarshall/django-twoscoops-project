@@ -2,7 +2,7 @@
 
 default["twoscoops"]["project_name"] = nil
 
-default["twoscoops"]["database"]["engine"] = "django.db.backends.psycopg2"
+default["twoscoops"]["database"]["engine"] = "django.db.backends.postgresql_psycopg2"
 default["twoscoops"]["database"]["username"] = "postgres"
 default["twoscoops"]["database"]["password"] = "vagrant"
 default["twoscoops"]["database"]["host"] = "localhost"

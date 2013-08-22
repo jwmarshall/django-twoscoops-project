@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "twoscoops" => {
         "project_name" => DJANGO_PROJECT_NAME,
         "database" => {
-          "engine" => "django.db.backends.psycopg2",
+          "engine" => "django.db.backends.postgresql_psycopg2",
           "username" => "postgres",
           "password" => "vagrant"
         }
