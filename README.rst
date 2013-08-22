@@ -2,7 +2,7 @@
 django-twoscoops-project
 ========================
 
-A project template for Django 1.5.
+A project template for Django 1.5 with built-in support for Vagrant and Chef.
 
 To use this project follow these steps:
 
