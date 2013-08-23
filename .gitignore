@@ -19,7 +19,18 @@ build
 logs/
 
 # Vagrant:
-.vagrant/
+.vagrant
 
 # Berkshelf
 .Berksfile.lock
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
