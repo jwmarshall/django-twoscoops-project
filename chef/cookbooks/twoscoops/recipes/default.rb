@@ -7,20 +7,20 @@
 # All rights reserved - Do Not Redistribute
 #
 
-#gem_package "pg"
+if node['twoscoops']['database']['engine'] == 'django.db.backends.postgresql_psycopg2'
+  include_recipe "database::postgresql"
 
-include_recipe "database::postgresql"
+  database_connection_info = {
+    :host => 'localhost',
+    :username => 'postgres',
+    :password => node['postgresql']['password']['postgres']
+  }
 
-database_connection_info = {
-  :host => 'localhost',
-  :username => 'postgres',
-  :password => node['postgresql']['password']['postgres']
-}
-
-postgresql_database node['twoscoops']['project_name'] do
-  connection database_connection_info
-  provider Chef::Provider::Database::Postgresql
-  action :create
+  postgresql_database node['twoscoops']['project_name'] do
+    connection database_connection_info
+    provider Chef::Provider::Database::Postgresql
+    action :create
+  end
 end
 
 directory "/vagrant/logs" do
