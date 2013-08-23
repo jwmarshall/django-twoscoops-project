@@ -17,7 +17,7 @@ database_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-postgresql_database "#{node['twoscoops']['project_name']}" do
+postgresql_database node['twoscoops']['project_name'] do
   connection database_connection_info
   provider Chef::Provider::Database::Postgresql
   action :create
