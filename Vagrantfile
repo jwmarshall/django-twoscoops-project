@@ -18,38 +18,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "chef/cookbooks"
+    chef.roles_path = "chef/roles"
 
     chef.json = {
-      "build_essential" => {
-        "compiletime" => true
-      },
-      "postgresql" => {
-        "password" => {
-          "postgres" => "vagrant"
-        },
-        "config" => {
-          "client_encoding" => "UTF8",
-          "default_transaction_isolation" => "read committed",
-          "timezone" => "UTC"
-        }
-      },
       "twoscoops" => {
-        "project_name" => DJANGO_PROJECT_NAME,
-        "database" => {
-          "engine" => "django.db.backends.postgresql_psycopg2",
-          "username" => "postgres",
-          "password" => "vagrant"
-        }
+        "project_name" => DJANGO_PROJECT_NAME
       } 
     }
 
-    chef.run_list = [
-      "build-essential",
-      "postgresql::server",
-      "python",
-      "supervisor",
-      "twoscoops"
-    ]
+    chef.add_role('local')
   end
 
   config.vm.provider :aws do |aws, override|
