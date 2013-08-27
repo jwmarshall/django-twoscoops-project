@@ -4,7 +4,6 @@
 from os import environ
 
 from base import *
-from database import *
 
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
@@ -52,12 +51,22 @@ SERVER_EMAIL = EMAIL_HOST_USER
 
 ########## DATABASE CONFIGURATION
 #DATABASES = {}
+# Load external database module if it exists
+try:
+    from database import *
+except ImportError:
+    pass
 ########## END DATABASE CONFIGURATION
 
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {}
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'application_cache'
+    }
+}
 ########## END CACHE CONFIGURATION
 
 
