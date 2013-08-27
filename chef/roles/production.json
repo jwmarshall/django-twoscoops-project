@@ -1,0 +1,40 @@
+{
+  "name": "production",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "build_essential": {
+      "compiletime": true
+    },
+    "postgresql": {
+      "password": {
+        "postgres": "change-this-password-123456789"
+      },
+      "config": {
+        "client_encoding": "UTF8",
+        "default_transaction_isolation": "read committed",
+        "timezone": "UTC"
+      }
+    },
+    "nginx": {
+      "default_site_enabled": false
+    },
+    "twoscoops": {
+      "secret_key": "change-this-secret-key-123456789",
+      "database": {
+        "engine": "django.db.backends.postgresql_psycopg2",
+         "username": "postgres",
+         "password": "change-this-password-123456789"
+      }
+    }
+  },
+  "run_list": [
+    "build-essential",
+    "postgresql::server",
+    "python",
+    "supervisor",
+    "nginx",
+    "uwsgi",
+    "twoscoops::production"
+  ]
+}
