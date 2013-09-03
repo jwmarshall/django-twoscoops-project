@@ -16,3 +16,14 @@ DATABASES = {
         "PORT": "",
     },
 }
+
+INSTALLED_APPS += (
+    'django_jenkins',
+)
+
+JENKINS_TASKS = (
+    'django_jenkins.tasks.with_coverage',
+    'django_jenkins.tasks.django_tests',
+    'django_jenkins.tasks.dir_tests',
+    'django_jenkins.tasks.pep8',
+)
