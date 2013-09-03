@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     chef.json = {
       "build-essential" => {
-        "compiletime": true
+        "compiletime" => true
       },
       "postgresql" => {
         "password" => {
