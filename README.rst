@@ -1,3 +1,6 @@
+ATTENTION! Development of this project has moved to: https://github.com/BNOTIONS/django-twoscoops-project
+
+
 ========================
 django-twoscoops-project
 ========================
